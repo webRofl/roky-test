@@ -6,17 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
+    "prettier": "prettier --write src//**/*.{ts,tsx}"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.6",
     "@types/node": "20.6.5",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
+    "axios": "^1.5.0",
     "eslint": "8.50.0",
     "eslint-config-next": "13.5.2",
     "next": "13.5.2",
+    "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-redux": "^8.1.2",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
   }
 }
