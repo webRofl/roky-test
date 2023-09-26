@@ -24,8 +24,6 @@ const CardSet: FC<Props> = ({ data }) => {
         dispatch(setCurrentPage(currentPage + 1));
         dispatch(fetchNews({ apiKey, ...formValues, isAppend: true, currentPage }));
         setIsFetching(false);
-
-        console.log('fetch');
       }, 300);
 
       fetch();
@@ -43,7 +41,6 @@ const CardSet: FC<Props> = ({ data }) => {
   const scrollHandler = () => {
     if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 200) {
       setIsFetching(true);
-      console.log('scroll');
     }
   };
 

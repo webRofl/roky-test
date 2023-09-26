@@ -42,3 +42,31 @@ export interface FetchNewsAsyncThunkProps {
   orderBy?: 'newest' | 'oldest' | 'relevance';
 }
 
+export interface ItemDetailsResponse {
+  response: {
+    content: ItemDetails;
+  }
+}
+
+export interface ItemDetails {
+  id: string;
+  type: string;
+  sectionId: string,
+  sectionName: string;
+  webPublicationDate: string;
+  webTitle: string;
+  webUrl: string;
+  apiUrl: string;
+  isHosted: boolean;
+  pillarId: string;
+  pillarName: string;
+  fields: {
+    headline: string;
+    standfirst: string;
+    trailText: string;
+    byline: string;
+    thumbnail: string;
+    bodyText: string;
+  };
+}
+

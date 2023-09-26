@@ -24,10 +24,6 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     dispatch(setApiKey(apiKey));
   }, [apiKey, dispatch, setApiKey]);
 
-  useEffect(() => {
-    console.log("component", news);
-  }, [news]);
-
   return <main>
     <SearchForm />
     <CardSet data={news ?? []} />

@@ -23,7 +23,6 @@ const newsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchNews.fulfilled, (state, action) => {
-      console.log("extraReducer", action);
       if (action.payload.isAppend) {
         state.all?.push(...action.payload.data);
 

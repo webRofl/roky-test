@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 import s from './style.module.css';
 import React from 'react';
+import Link from 'next/link';
+import { StringUtils } from '@/utils';
 
 interface Props {
   imgLink: string | undefined;
@@ -10,14 +12,14 @@ interface Props {
   id: string;
 }
 
-const Card: FC<Props> = React.memo(({ date, imgLink, title }) => {
+const Card: FC<Props> = React.memo(({ date, imgLink, title, id }) => {
   return (<div className={s.container}>
     {imgLink && <img className={s.image} src={imgLink} alt='card image' />}
     <div className={s.time}>
-      {new Intl.DateTimeFormat("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(date)) + ', ' + new Intl.DateTimeFormat("en-US", { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(new Date(date))}
+      {StringUtils.getPrettyDate(date)}
     </div>
     <h3 className={s.title}>{title}</h3>
-    <button className={s.details}>Details <Image src='/arrow-right.svg' alt='arrow right icon' width={15} height={15} /></button>
+    <Link href={'/news/' + id} className={s.details}>Details <Image src='/arrow-right.svg' alt='arrow right icon' width={15} height={15} /></Link>
   </div>);
 });
 

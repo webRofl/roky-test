@@ -1,0 +1,23 @@
+.container {
+  background-color: lightgray;
+  padding: 2rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.metaBlock {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.link {
+  color: blue;
+}
+
+.time {
+  color: #3d3939;
+}
