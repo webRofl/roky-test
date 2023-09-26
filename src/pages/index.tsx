@@ -1,4 +1,4 @@
-import { SearchForm } from '@/components/organisms';
+import { CardSet, SearchForm } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Selectors, fetchNews, wrapper } from "@/store";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -16,7 +16,7 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   apiKey,
 }) => {
   const dispatch = useAppDispatch();
-  const news = useAppSelector(Selectors.news);
+  const news = useAppSelector(Selectors.allNews);
 
   useEffect(() => {
     dispatch(fetchNews({ apiKey }));
@@ -27,8 +27,8 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   }, [news]);
 
   return <main>
-    <div>main page</div>
     <SearchForm />
+    <CardSet data={news ?? []} />
   </main>;
 };
 

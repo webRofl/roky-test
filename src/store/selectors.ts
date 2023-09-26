@@ -1,3 +1,3 @@
 import type { RootState } from "./store";
 
-export const news = (state: RootState) => state.news;
+export const allNews = (state: RootState) => state.news.all;

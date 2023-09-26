@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 28vw;
+  background-color: lightgray;
+  gap: 1rem;
+  position: relative;
+}
+
+.image {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.time {
+  color: #3d3939;
+  margin-left: 1rem;
+}
+
+.title {
+  margin-left: 1rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.details {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: .5rem;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.details:hover {
+  background-color: rgba(255, 166, 0, 0.478);
+}
