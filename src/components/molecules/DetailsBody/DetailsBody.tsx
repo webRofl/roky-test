@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import s from './style.module.css';
+import Link from 'next/link';
 
 interface Props {
   img: string;
@@ -22,6 +23,7 @@ const DetailsBody: FC<Props> = React.memo(({ img, name, title, trailText, body }
       <div>{trailText}</div>
       <div>{name}</div>
     </blockquote>
+    <Link className={s.link} href="/">На Главную</Link>
   </main>);
 });
 

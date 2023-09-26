@@ -23,6 +23,12 @@
   font-size: 1.2rem;
 }
 
+.link {
+  color: blue;
+  margin-top: 2rem;
+  display: block;
+}
+
 @media screen and (max-width: 500px) {
   .img {
     float: none;
