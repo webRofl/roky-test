@@ -21,3 +21,17 @@
 .time {
   color: #3d3939;
 }
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding-bottom: 0;
+  }
+
+  .metaBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

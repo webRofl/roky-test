@@ -48,3 +48,24 @@
   color: white !important;
   float: left;
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 10px;
+    width: 98vw;
+  }
+
+  .search {
+    width: 70%;
+  }
+
+  .pageSizeSelect {
+    margin-top: -2.5rem;
+  }
+}
