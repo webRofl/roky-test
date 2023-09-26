@@ -20,7 +20,7 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const { setApiKey } = newsSlice.actions;
 
   useEffect(() => {
-    dispatch(fetchNews({ apiKey }));
+    dispatch(fetchNews({ apiKey, currentPage: 1 }));
     dispatch(setApiKey(apiKey));
   }, [apiKey, dispatch, setApiKey]);
 

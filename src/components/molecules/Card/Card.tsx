@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import s from './style.module.css';
+import React from 'react';
 
 interface Props {
   imgLink: string | undefined;
@@ -9,7 +10,7 @@ interface Props {
   id: string;
 }
 
-const Card: FC<Props> = ({ date, imgLink, title }) => {
+const Card: FC<Props> = React.memo(({ date, imgLink, title }) => {
   return (<div className={s.container}>
     {imgLink && <img className={s.image} src={imgLink} alt='card image' />}
     <div className={s.time}>
@@ -18,6 +19,8 @@ const Card: FC<Props> = ({ date, imgLink, title }) => {
     <h3 className={s.title}>{title}</h3>
     <button className={s.details}>Details <Image src='/arrow-right.svg' alt='arrow right icon' width={15} height={15} /></button>
   </div>);
-}
+});
+
+Card.displayName = 'Card';
 
 export default Card;

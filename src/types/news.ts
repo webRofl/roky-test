@@ -16,6 +16,7 @@ export interface Item {
 }
 
 export interface Response {
+  currentPage: number;
   response: {
     currentPage: number;
     orderBy: string;
@@ -28,10 +29,14 @@ export interface Response {
 export interface State {
   all: Item[] | null;
   apiKey: string;
+  formValues: Omit<FetchNewsAsyncThunkProps, 'apiKey' | 'currentPage'>;
+  currentPage: number;
 }
 
 export interface FetchNewsAsyncThunkProps {
   apiKey: string;
+  currentPage: number;
+  isAppend?: boolean;
   query?: string;
   pageSize?: number | string;
   orderBy?: 'newest' | 'oldest' | 'relevance';

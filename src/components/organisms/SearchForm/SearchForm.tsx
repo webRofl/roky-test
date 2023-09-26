@@ -2,7 +2,7 @@ import { Button, Form, Input, Select } from 'antd';
 import Image from 'next/image';
 import s from './style.module.css';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { Selectors, fetchNews } from '@/store';
+import { Selectors, fetchNews, newsSlice } from '@/store';
 import { News } from '@/types';
 
 const selectOptionsSort = [
@@ -13,8 +13,8 @@ const selectOptionsSort = [
 
 const selectOptionsPageSize = [
   { value: '20', label: '20' },
-  { value: '40', label: '40' },
-  { value: '60', label: '60' },
+  { value: '35', label: '35' },
+  { value: '50', label: '50' },
 ];
 
 const initialValues = {
@@ -26,19 +26,27 @@ const initialValues = {
 const SearchForm = () => {
   const dispatch = useAppDispatch();
   const apiKey = useAppSelector(Selectors.apiKey);
+  const currentPage = useAppSelector(Selectors.currentPage);
+  const { query } = useAppSelector(Selectors.formValues);
+  const { setFormValues, setCurrentPage } = newsSlice.actions;
 
   const onFinish = (values: Record<string, string>) => {
-    console.log('FINISH', values);
     const options: News.FetchNewsAsyncThunkProps = {
       apiKey,
+      currentPage,
       orderBy: values.sortSelect as 'newest' | 'oldest' | 'relevance',
       pageSize: values.pageSizeSelect,
     };
 
     if (values.search.length) {
       options.query = values.search;
+      
+      if (query !== values.search) {
+        dispatch(setCurrentPage(1));
+      }
     }
 
+    dispatch(setFormValues(options));
     dispatch(fetchNews(options));
   };
 
