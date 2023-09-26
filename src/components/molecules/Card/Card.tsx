@@ -3,7 +3,7 @@ import { FC } from 'react';
 import s from './style.module.css';
 
 interface Props {
-  imgLink: string;
+  imgLink: string | undefined;
   date: string;
   title: string;
   id: string;
@@ -11,7 +11,7 @@ interface Props {
 
 const Card: FC<Props> = ({ date, imgLink, title }) => {
   return (<div className={s.container}>
-    <img className={s.image} src={imgLink} alt='card image' />
+    {imgLink && <img className={s.image} src={imgLink} alt='card image' />}
     <div className={s.time}>
       {new Intl.DateTimeFormat("en-GB", { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(date)) + ', ' + new Intl.DateTimeFormat("en-US", { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(new Date(date))}
     </div>

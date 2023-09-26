@@ -1,6 +1,9 @@
 import { Button, Form, Input, Select } from 'antd';
 import Image from 'next/image';
 import s from './style.module.css';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { Selectors, fetchNews } from '@/store';
+import { News } from '@/types';
 
 const selectOptionsSort = [
   { value: 'newest', label: 'sort by newest' },
@@ -21,8 +24,22 @@ const initialValues = {
 };
 
 const SearchForm = () => {
+  const dispatch = useAppDispatch();
+  const apiKey = useAppSelector(Selectors.apiKey);
+
   const onFinish = (values: Record<string, string>) => {
     console.log('FINISH', values);
+    const options: News.FetchNewsAsyncThunkProps = {
+      apiKey,
+      orderBy: values.sortSelect as 'newest' | 'oldest' | 'relevance',
+      pageSize: values.pageSizeSelect,
+    };
+
+    if (values.search.length) {
+      options.query = values.search;
+    }
+
+    dispatch(fetchNews(options));
   };
 
   return <Form className={s.container} onFinish={onFinish} initialValues={initialValues}>

@@ -10,7 +10,7 @@ export interface Item {
   isHosted: boolean;
   pillarId: string;
   pillarName: string;
-  fields: {
+  fields?: {
     thumbnail: string;
   };
 }
@@ -27,4 +27,13 @@ export interface Response {
 
 export interface State {
   all: Item[] | null;
+  apiKey: string;
 }
+
+export interface FetchNewsAsyncThunkProps {
+  apiKey: string;
+  query?: string;
+  pageSize?: number | string;
+  orderBy?: 'newest' | 'oldest' | 'relevance';
+}
+

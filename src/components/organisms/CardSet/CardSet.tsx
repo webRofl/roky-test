@@ -9,8 +9,10 @@ interface Props {
 
 const CardSet: FC<Props> = ({ data }) => {
   return (<article className={s.container}>
-    {data.map(({ id, fields: { thumbnail }, webTitle, webPublicationDate }) => {
-      return <Card key={id} id={id} date={webPublicationDate} title={webTitle} imgLink={thumbnail} />
+    {data.map((item) => {
+      const { id, webTitle, webPublicationDate } = item;
+
+      return <Card key={id} id={id} date={webPublicationDate} title={webTitle} imgLink={item?.fields?.thumbnail} />
     })}
   </article>);
 }

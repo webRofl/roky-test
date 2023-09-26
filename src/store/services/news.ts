@@ -2,17 +2,10 @@ import { News } from "@/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface AsyncThunkProps {
-  apiKey: string;
-  query?: string;
-  pageSize?: number | string;
-  orderBy?: 'newest' | 'oldest' | 'relevance';
-}
-
-export const fetchNews = createAsyncThunk<News.Item[], AsyncThunkProps>(
+export const fetchNews = createAsyncThunk<News.Item[], News.FetchNewsAsyncThunkProps>(
   "news/fetch",
   async ({ apiKey, query, pageSize = 20, orderBy = 'newest' }) => {
-    let queryString = `api-key=${apiKey}&show-fields=thumbnail&pageSize=${pageSize}&orderBy=${orderBy}`;
+    let queryString = `api-key=${apiKey}&show-fields=thumbnail&page-size=${pageSize}&order-by=${orderBy}`;
 
     if (query && query.length) {
       queryString += `&q=${query}`;

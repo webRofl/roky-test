@@ -1,6 +1,6 @@
 import { CardSet, SearchForm } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { Selectors, fetchNews, wrapper } from "@/store";
+import { Selectors, fetchNews, newsSlice, wrapper } from "@/store";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { FC, useEffect } from "react";
 
@@ -17,10 +17,12 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   const dispatch = useAppDispatch();
   const news = useAppSelector(Selectors.allNews);
+  const { setApiKey } = newsSlice.actions;
 
   useEffect(() => {
     dispatch(fetchNews({ apiKey }));
-  }, [apiKey, dispatch]);
+    dispatch(setApiKey(apiKey));
+  }, [apiKey, dispatch, setApiKey]);
 
   useEffect(() => {
     console.log("component", news);
