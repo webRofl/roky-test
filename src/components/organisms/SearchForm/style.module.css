@@ -1,0 +1,49 @@
+.container {
+  background-color: dimgrey;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  width: 60vw;
+  margin: auto;
+}
+
+.inputBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search {
+  width: 75%;
+  height: 2.5rem;
+}
+
+.submitBtn {
+  padding: 0 2rem !important;
+  height: 2.5rem !important;
+}
+
+.filterBlock {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.sortSelect {
+  width: 45%;
+}
+
+.pageSizeSelect {
+  width: 45%;
+  margin-top: -2rem;
+}
+
+.pageSizeSelect > div:nth-child(1) {
+  flex-direction: column;
+}
+
+.pageSizeSelect label {
+  color: white !important;
+  float: left;
+}

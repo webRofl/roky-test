@@ -1,3 +1,4 @@
+import { SearchForm } from '@/components/organisms';
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { Selectors, fetchNews, wrapper } from "@/store";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -25,7 +26,10 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     console.log("component", news);
   }, [news]);
 
-  return <div>main page</div>;
+  return <main>
+    <div>main page</div>
+    <SearchForm />
+  </main>;
 };
 
 export default wrapper.withRedux(MainPage);
