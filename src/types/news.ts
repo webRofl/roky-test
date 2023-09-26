@@ -10,6 +10,9 @@ export interface Item {
   isHosted: boolean;
   pillarId: string;
   pillarName: string;
+  fields: {
+    thumbnail: string;
+  };
 }
 
 export interface Response {

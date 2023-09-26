@@ -19,7 +19,7 @@ const MainPage: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const news = useAppSelector(Selectors.news);
 
   useEffect(() => {
-    dispatch(fetchNews(apiKey));
+    dispatch(fetchNews({ apiKey }));
   }, [apiKey, dispatch]);
 
   useEffect(() => {
